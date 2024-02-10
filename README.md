@@ -1,3 +1,3 @@
 # simple_calculator
 
-test hello world
+make a simple calculator by wxPython
