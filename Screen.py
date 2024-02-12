@@ -1,5 +1,6 @@
 # the screen would show the word and the word would align right
 import wx
+from time import sleep
 
 class Screen(wx.StaticText):
     def __init__(self, parent, id, label, pos, size):
@@ -7,5 +8,19 @@ class Screen(wx.StaticText):
         self.label = label
         self.SetBackgroundColour("white")
         self.SetForegroundColour("black")
+
+    def set_label(self, label):
+        self.SetLabel(label)
+    
+    def reset_label(self):
+        self.SetLabel("")
+
+    def add_label(self, label):
+        self.SetLabel(self.GetLabel() + label)
+    
+    def error_label(self):
+        self.SetLabel("Error")
+        sleep(1)
+        self.SetLabel("")
 
 
