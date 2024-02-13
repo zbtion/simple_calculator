@@ -8,6 +8,7 @@ class Screen(wx.StaticText):
         self.label = label
         self.SetBackgroundColour("white")
         self.SetForegroundColour("black")
+        self.SetFont(wx.Font(18, wx.SWISS, wx.NORMAL, wx.BOLD))
 
     def set_label(self, label):
         self.SetLabel(label)
@@ -22,5 +23,9 @@ class Screen(wx.StaticText):
         self.SetLabel("Error")
         sleep(1)
         self.SetLabel("")
+    
+    def pop_label(self):
+        self.SetLabel(self.GetLabel()[:-1])
+    
 
 

@@ -21,24 +21,35 @@ class Calculator(wx.Frame):
 
     def set_buttons(self, base_panel, controller):
         button_panel = wx.Panel(base_panel)
-        sizer = wx.GridSizer(4, 4, 5, 5)
-        sizer.AddMany([ (Button(button_panel, 1, '1', controller), 0, wx.EXPAND),
-                               (Button(button_panel, 2, '2', controller), 0, wx.EXPAND),
-                               (Button(button_panel, 3, '3', controller), 0, wx.EXPAND),
-                               (Button(button_panel, -1, '+', controller), 0, wx.EXPAND),
-                               (Button(button_panel, 4, '4', controller), 0, wx.EXPAND),
-                               (Button(button_panel, 5, '5', controller), 0, wx.EXPAND),
-                               (Button(button_panel, 6, '6', controller), 0, wx.EXPAND),
-                               (Button(button_panel, -1, '-', controller), 0, wx.EXPAND),
-                               (Button(button_panel, 7, '7', controller), 0, wx.EXPAND),
-                               (Button(button_panel, 8, '8', controller), 0, wx.EXPAND),
-                               (Button(button_panel, 9, '9', controller), 0, wx.EXPAND),
-                               (Button(button_panel, -1, '*', controller), 0, wx.EXPAND),
-                               (Button(button_panel, -1, 'C', controller), 0, wx.EXPAND),
-                               (Button(button_panel, 0, '0', controller), 0, wx.EXPAND),
-                               (Button(button_panel, -1, '=', controller), 0, wx.EXPAND),
-                               (Button(button_panel, -1, '/', controller), 0, wx.EXPAND)
-                               ])
+        button_panel.SetBackgroundColour("white")
+        sizer = wx.GridSizer(5, 4, 5, 5)
+        sizer.AddMany([
+                        (Button(button_panel, -1, 'C', controller), 0, wx.EXPAND),
+                        (Button(button_panel, -1, 'del', controller), 0, wx.EXPAND),
+                        (Button(button_panel, -1, '%', controller), 0, wx.EXPAND),
+                        (Button(button_panel, -1, '/', controller), 0, wx.EXPAND),
+                        
+                        (Button(button_panel, 1, '1', controller), 0, wx.EXPAND),
+                        (Button(button_panel, 2, '2', controller), 0, wx.EXPAND),
+                        (Button(button_panel, 3, '3', controller), 0, wx.EXPAND),
+                        (Button(button_panel, -1, '+', controller), 0, wx.EXPAND),
+
+                        (Button(button_panel, 4, '4', controller), 0, wx.EXPAND),
+                        (Button(button_panel, 5, '5', controller), 0, wx.EXPAND),
+                        (Button(button_panel, 6, '6', controller), 0, wx.EXPAND),
+                        (Button(button_panel, -1, '-', controller), 0, wx.EXPAND),
+
+                        (Button(button_panel, 7, '7', controller), 0, wx.EXPAND),
+                        (Button(button_panel, 8, '8', controller), 0, wx.EXPAND),
+                        (Button(button_panel, 9, '9', controller), 0, wx.EXPAND),
+                        (Button(button_panel, -1, '*', controller), 0, wx.EXPAND),
+
+                        (Button(button_panel, -1, '+/-', controller), 0, wx.EXPAND),
+                        (Button(button_panel, 0, '0', controller), 0, wx.EXPAND),
+                        (Button(button_panel, -1, '.', controller), 0, wx.EXPAND),
+                        (Button(button_panel, -1, '=', controller), 0, wx.EXPAND)
+                        
+                           ])
         button_panel.SetSizer(sizer)
         base_panel.GetSizer().Add(button_panel, 0, wx.EXPAND)
         
