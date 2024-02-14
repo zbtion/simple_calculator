@@ -3,28 +3,42 @@ class Controller:
     def __init__(self, screen):
         self.screen = screen
         self.label = ""
-        self.current_operator = ""
-        self.current_number = ""
+        self.current = ""
     
     def recv_message(self, message):
         if message == "C" or self.label == "Error":
             self.label = ""
+            self.current = ""
+
         elif message == "del":
-            self.label = self.label[:-1]
+            if self.current != "":
+                self.current = self.current[:-1]
+            else:
+                self.label = self.label[:-1]
+
         elif message == "=":
             try:
-                self.label = str(eval(self.label))
+                self.label = str(eval(self.label+self.current))
             except:
                 self.label = "Error"
+            self.current = ""
+        
         elif message == "+/-":
-            pass
-        else:
-            self.label += message
-        self.screen.set_label(self.label)
+            pass    # not implemented yet
     
-    def is_digit(self, message):
-        return message in "0123456789"
+        elif message == ".":
+            pass   # not implemented yet
+
+        elif self.is_operator(message):
+            if not self.is_operator(self.current):
+                self.label += self.current                
+            self.current = message
+        
+        else:
+            self.current += message
+
+        self.screen.set_label(self.label + self.current)
 
     def is_operator(self, message):
-        return message in "+-*/"
+        return message in "+-*/%"
         
