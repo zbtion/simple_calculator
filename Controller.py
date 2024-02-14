@@ -2,23 +2,29 @@
 class Controller:
     def __init__(self, screen):
         self.screen = screen
+        self.label = ""
+        self.current_operator = ""
+        self.current_number = ""
     
     def recv_message(self, message):
-        if message == "C":
-            self.screen.reset_label()
-
+        if message == "C" or self.label == "Error":
+            self.label = ""
+        elif message == "del":
+            self.label = self.label[:-1]
         elif message == "=":
             try:
-                self.screen.set_label(str(eval(self.screen.GetLabel())))
+                self.label = str(eval(self.label))
             except:
-                self.screen.error_label()
-
-        elif message == "del":
-            self.screen.pop_label()
-
+                self.label = "Error"
         elif message == "+/-":
             pass
-        
         else:
-            self.screen.add_label(message)
+            self.label += message
+        self.screen.set_label(self.label)
+    
+    def is_digit(self, message):
+        return message in "0123456789"
+
+    def is_operator(self, message):
+        return message in "+-*/"
         

@@ -10,4 +10,3 @@ class Button(wx.Button):
 
     def OnClick(self, event):
         self.controller.recv_message(self.GetLabel())
-        pass
